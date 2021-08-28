@@ -1,0 +1,32 @@
+let file = @file::new('D:\\programming\\spwn\\ascii-spwn\\ascii.txt')
+let data = file.read()
+characters = data.split('\n')
+let parsed_characters = []
+let parsed_dec = []
+let parsed_hex = []
+let parsed_bin = []
+for character in characters {
+    let parts = character.split('	')
+	parsed_dec.push(parts[0])
+	parsed_hex.push(parts[2])
+	parsed_bin.push(parts[3])
+	parsed_characters.push(parts[4])
+}
+
+type @converter
+impl @converter {
+	binary: (text: @string) {
+		index = parsed_characters.index(text)
+		return parsed_bin[index]
+	},
+	decimal: (text: @string) {
+		index = parsed_characters.index(text)
+		return parsed_dec[index]
+	},
+	hexadecimal: (text: @string) {
+		index = parsed_characters.index(text)
+		return parsed_hex[index]
+	}
+}
+
+return @converter
