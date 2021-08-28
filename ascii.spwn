@@ -35,3 +35,4 @@ impl @converter {
 		return self.parsed_hex[index]
 	}
 }
+return @converter
